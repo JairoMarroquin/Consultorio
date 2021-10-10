@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Inicio de Sesión</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="public/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="public/css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="hero-image">
+        <img src="src/img/login.png" width="460" height="345">
+        <div class="fadeInDown" id="contenedor">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-6" id="elementos">
+                        <div class="panel panel-default" id="elementos-dentro">
+        
+                            <div class="fadeIn first"> <!--Primer fade-->
+                                <div class="panel-heading">
+                                    <h3 class="titulo-login">Inicio de Sesión</h3>
+                                </div>
+                            </div>
+    
+                            <div class="panel-body" role="form">
+                                <form id="frmLogin" method="POST" onsubmit="return loginUsuario()" accept-charset="UTF-8">
+                                    <fieldset>
+    
+                                        <div class="fadeIn second"><!--Segundo fade-->
+                                            <div class="form-group">
+                                                <input class="form-control" placeholder="Usuario" name="usuario" type="text" required>
+                                            </div>
+                                        </div>
+    
+                                        <div class="fadeIn third"><!--Tercer fade-->
+                                            <div class="form-group">
+                                                <input class="form-control" placeholder="Contraseña" name="password" type="password" value="" required>
+                                            </div>
+                                        </div>
+    
+                                        <div class="fadeIn fourth"><!--Cuarto fade-->
+                                            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ingresar">
+                                        </div>
+                                        
+                                        <div class="fadeIn fifth"><!--Quinto fade-->
+                                            <div class="checkbox">
+                                                <label>
+                                                    <a class="btn btn-md btn-link" href="#" role="button" data-toggle="modal" data-target="#modalContacto">Contactar con el administrador</a>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            <footer class="copy">
+                <div class="copy_texto">Copyright &copy; 2021 - J&L </div>
+            </footer>
+        </div>
+    </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="modalContacto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Contacto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Para cualquier duda dirigete a: ____________________
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+        </div>
+    </div>
+</div>
+    <script src="public/jquery/jquery-3.6.0.min.js"></script>
+    <script src="public/bootstrap/popper.min.js"></script>
+    <script src="public/bootstrap/bootstrap.min.js"></script>
+    <script src="public/sweetalert2/sweetalert2@11.js"></script>
+    <script src="public/js/usuarios/login.js"></script>
+</body>
+</html>
