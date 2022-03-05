@@ -12,7 +12,7 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1 || $_SESSION[
     <h1 class="fw-light">Usuarios del sistema</h1>
       <p class="lead">
         <hr>
-        <button class="btn btn-outline-primary" data-toggle="modal" data-target="#agregarUsuarios"><span class="fas fa-user-plus"></span> Agregar Usuario</button>
+        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#agregarUsuarios"><span class="fas fa-user-plus"></span> Agregar Usuario</button>
         <hr>
         <div id="tablaUsuariosLoad"></div>
       </p>

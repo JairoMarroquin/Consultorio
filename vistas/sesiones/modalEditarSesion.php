@@ -28,8 +28,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                 <input type="hidden" name="idSesionEditar" id="idSesionEditar" value="">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar Sesión</h5>
-                    <span type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <input type="hidden" name="idPaciente" id="idPaciente" value="">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar sesión</h5>
+                    <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </span>
                 </div>
@@ -39,15 +40,15 @@
                             <div class="row">
                                 <label for="citau">¿La sesión tuvo cita previa?</label>
                             </div>
-                            <div class="custom-control custom-radio">
-                                <input class="custom-control-input" type="radio" name="citau" id="citauSi" value = "1" checked>
-                                <label class="custom-control-label" for="citauSi">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="citau" id="citauSi" value = "1" checked>
+                                <label class="form-check-label" for="citauSi">
                                     Si
                                 </label>
                             </div>
-                            <div class="custom-control custom-radio">
-                                <input class="custom-control-input" type="radio" name="citau" id="citauNo" value="2">
-                                <label class="custom-control-label" for="citauNo">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="citau" id="citauNo" value="2">
+                                <label class="form-check-label" for="citauNo">
                                     No
                                 </label>
                             </div>
@@ -57,15 +58,15 @@
                             <div class="row">
                                 <label for="tipo_sesionu">Tipo de Sesión</label>
                             </div>
-                            <div class="custom-control custom-radio">
-                                <input class="custom-control-input" type="radio" name="tipo_sesionu" id="indu" value = "1" checked>
-                                <label class="custom-control-label" for="indu">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tipo_sesionu" id="indu" value = "1" checked>
+                                <label class="form-check-label" for="indu">
                                     Individual
                                 </label>
                             </div>
-                            <div class="custom-control custom-radio">
-                                <input class="custom-control-input" type="radio" name="tipo_sesionu" id="parejau" value="2">
-                                <label class="custom-control-label" for="parejau">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tipo_sesionu" id="parejau" value="2">
+                                <label class="form-check-label" for="parejau">
                                     En Pareja
                                 </label>
                             </div>
@@ -93,7 +94,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <span class="btn btn-outline-danger" data-dismiss="modal">Cerrar</span> <!--se pone span por el onSubmit, si se da clic en cerrar tambien se guardaria el paciente-->
+                    <span class="btn btn-outline-danger" data-bs-dismiss="modal">Cerrar</span> <!--se pone span por el onSubmit, si se da clic en cerrar tambien se guardaria el paciente-->
                     <button class="btn btn-outline-primary">Guardar Datos</button>
                 </div>
 

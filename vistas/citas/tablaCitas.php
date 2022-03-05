@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "../../clases/Conexion.php";
+date_default_timezone_set("America/Monterrey");
 $con = new Conexion();
 $conexion = $con->conectar();
 $sql="SELECT 
@@ -32,14 +33,15 @@ $sql="SELECT
             Inner join
         usuarios as psicologo ON citas.id_psicologo = psicologo.id_usuario
             INNER JOIN
-        tipo_sesion as tipoSesion ON citas.tipo_sesion = tipoSesion.id_tipoSesion";
+        tipo_sesion as tipoSesion ON citas.tipo_sesion = tipoSesion.id_tipoSesion
+        ORDER BY citas.id_cita DESC";
 
 $respuesta = mysqli_query($conexion, $sql);
+$fechaActual= date("Y-m-d H:i");
 ?>
 
 <table class="table table-sm table-hover table-responsive dt-responsive nowrap" style="width:100%" id="tablaCitasDataTable">
     <thead>
-        <th> ID </th>
         <th> Paciente </th>
         <th> Psicólogo </th>
         <th> Tipo de Sesión </th>
@@ -52,34 +54,48 @@ $respuesta = mysqli_query($conexion, $sql);
     <?php
     while($mostrar = mysqli_fetch_array($respuesta)){
         if($_SESSION['usuario']['rol'] == 1 && $mostrar['eliminada'] == 0 && $mostrar['atendida'] == 0){
+            $fechaCita = $mostrar['dia'].' '.$mostrar['hora']; 
     ?>
         <tr>
-            <td><?php echo $mostrar['idCita'];?></td>
             <td><?php echo $mostrar['nombrePaciente'];?> <?php echo $mostrar['segundoNombrePaciente'];?> <?php echo $mostrar['paternoPaciente'];?> <?php echo $mostrar['maternoPaciente'];?></td>
             <td><?php echo $mostrar['nombrePsicologo'];?> <?php echo $mostrar['segundoNombrePsicologo'];?> <?php echo $mostrar['paternoPsicologo'];?> <?php echo $mostrar['maternoPsicologo'];?></td>
             <td><?php echo $mostrar['nombreSesion'];?></td>
-            <td><?php echo $mostrar['dia'];?> <?php echo $mostrar['hora']?></td>
+            <?php if($fechaActual > $fechaCita){ ?><td style="color:#e61405;font-weight:bolder;"><?php echo $fechaCita;?></td> <?php }else{ ?><td style="color:#009e11;font-weight:bolder;"><?php echo $fechaCita;?></td> <?php }?>
             <td><?php echo $mostrar['notas']?></td>
-            <td><h3>
-                <button class="btn btn-outline-info badge badge-pill" style="width: 60px;" data-toggle="modal" data-target="#editarCitas" onClick="obtenerDatosEditarCita(<?php echo $mostrar['idCita'];?>)"><span class="far fa-edit"></span></button>
-                <button class="btn btn-outline-danger badge badge-pill" style="width: 60px;" onclick="return confirmDelete(<?php echo $mostrar['idCita'];?>);"><span class="far fa-calendar-times"></span></button>
-            </h3></td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
+                    <ul class="dropdown-menu" id="optCit" aria-labelledby="dropdownMenuButton1">
+                        <li><h6 class="dropdown-header">Acciones</h6></li>
+                        <li><a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editarCitas" onClick="obtenerDatosEditarCita(<?php echo $mostrar['idCita'];?>)">Editar</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a href="" style="color:red;" onclick="return confirmDelete(<?php echo $mostrar['idCita'];?>);" class="dropdown-item">Eliminar</a></li> 
+                    </ul>
+                </div>
+            </td>
         </tr>
 
         <?php
         }elseif($_SESSION['usuario']['id'] == $mostrar['idPsicologo'] && $mostrar['eliminada'] == 0 && $mostrar['atendida'] == 0){
+            $fechaCita = $mostrar['dia'].' '.$mostrar['hora']; 
             ?>
             <tr>
-            <td><?php echo $mostrar['idCita'];?></td>
             <td><?php echo $mostrar['nombrePaciente'];?> <?php echo $mostrar['segundoNombrePaciente'];?> <?php echo $mostrar['paternoPaciente'];?> <?php echo $mostrar['maternoPaciente'];?></td>
             <td><?php echo $mostrar['nombrePsicologo'];?> <?php echo $mostrar['segundoNombrePsicologo'];?> <?php echo $mostrar['paternoPsicologo'];?> <?php echo $mostrar['maternoPsicologo'];?></td>
             <td><?php echo $mostrar['nombreSesion'];?></td>
-            <td><?php echo $mostrar['dia'];?> <?php echo $mostrar['hora']?></td>
+            <?php if($fechaActual > $fechaCita){ ?><td style="color:#e61405;font-weight:bolder;"><?php echo $fechaCita;?></td> <?php }else{ ?><td style="color:#009e11;font-weight:bolder;"><?php echo $fechaCita;?></td> <?php }?>
             <td><?php echo $mostrar['notas']?></td>
-            <td><h3>
-                <button class="btn btn-outline-info badge badge-pill" style="width: 60px;" data-toggle="modal" data-target="#editarCitas" onClick="obtenerDatosEditarCita(<?php echo $mostrar['idCita'];?>)"><span class="far fa-edit"></span></button>
-                <button class="btn btn-outline-danger badge badge-pill" style="width: 60px;" onclick="return confirmDelete(<?php echo $mostrar['idCita'];?>);"><span class="far fa-calendar-times"></span></button>
-            </h3></td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
+                    <ul class="dropdown-menu" id="optCit" aria-labelledby="dropdownMenuButton1">
+                        <li><h6 class="dropdown-header">Acciones</h6></li>
+                        <li><a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editarCitas" onClick="obtenerDatosEditarCita(<?php echo $mostrar['idCita'];?>)">Editar</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a href="" style="color:red;" onclick="return confirmDelete(<?php echo $mostrar['idCita'];?>);" class="dropdown-item">Eliminar</a></li> 
+                    </ul>
+                </div>
+            </td>
         </tr>
             <?php
         }

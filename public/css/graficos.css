@@ -1,0 +1,115 @@
+.tier_1{
+    display: flex;
+}
+.tier_2{
+    display: flex;
+}
+.sesiones{
+    width: 50%;
+}
+.citas{
+    width: 50%;
+}
+.estatus{
+    width: 50%;
+}
+.title_grafico_sesiones{
+    margin-top: 50px;
+}
+.title_grafico_citas{
+    margin-top: 50px;
+}
+.container_grafico_sesiones{
+    width: 700px;
+    height: auto;
+    display: inline-block;
+    align-items: left;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: auto;
+}
+.container_grafico_citas{
+    width: 700px;
+    height: auto;
+    display: inline-block;
+    align-items: left;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container_grafico_estatus{
+    width: 700px;
+    height: auto;
+    display: inline-block;
+    align-items: left;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.grafico_sesiones{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-image: conic-gradient(var(--color_individual) 0 var(--porcentajeInd),
+                                    var(--color_pareja) var(--porcentajeInd) var(--porcentajePar));
+    box-shadow: 1px 1px 5px 1px rgb(70, 70, 70);
+}
+
+.grafico_citas{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-image: conic-gradient(var(--color_individual) 0 var(--porcentajeSinCita),
+                                    var(--color_pareja) var(--porcentajeSinCita) var(--porcentajeConCita));
+    box-shadow: 1px 1px 5px 1px rgb(70, 70, 70);
+}
+
+.grafico_estatus{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: conic-gradient(var(--color_activo) var(--porcentajePacAct),
+                                    var(--color_baja) 0 var(--baja),
+                                    var(--color_alta) 0 var(--alta),
+                                    var(--color_canalizado) 0);
+    box-shadow: 1px 1px 5px 1px rgb(70, 70, 70);
+}
+
+.leyenda_all{
+    margin-left: 100%;
+    width: 10rem;
+    color:black;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+[class^="color_"]{
+    width: 15px;
+    height: 15px;
+    background-color: var(--color_individual);
+    margin-right: 8px;
+    border-radius: 2px;
+}
+
+.color_pareja{
+    background-color: var(--color_pareja);
+}
+
+.color_activo{
+    background-color: var(--color_activo);
+}
+
+.color_alta{
+    background-color: var(--color_alta);
+}
+
+.color_baja{
+    background-color: var(--color_baja);
+}
+
+.color_canalizado{
+    background-color: var(--color_canalizado);
+}

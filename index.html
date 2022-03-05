@@ -5,7 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Inicio de Sesión</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="public/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="public/css/login.css">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
 </head>
@@ -20,7 +20,7 @@
         
                             <div class="fadeIn first"> <!--Primer fade-->
                                 <div class="panel-heading">
-                                    <h3 class="titulo-login">Inicio de Sesión</h3>
+                                    <h3 class="titulo-login">INICIO DE SESIÓN</h3>
                                 </div>
                             </div>
     
@@ -28,7 +28,7 @@
                                 <form id="frmLogin" method="POST" onsubmit="return loginUsuario()" accept-charset="UTF-8">
                                     <fieldset>
     
-                                        <div class="fadeIn second"><!--Segundo fade-->
+                                        <div class="fadeIn second" style="margin-bottom: 5%;"><!--Segundo fade-->
                                             <div class="form-group">
                                                 <input class="form-control" placeholder="Usuario" name="usuario" type="text" required>
                                             </div>
@@ -40,14 +40,14 @@
                                             </div>
                                         </div>
     
-                                        <div class="fadeIn fourth"><!--Cuarto fade-->
-                                            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ingresar">
+                                        <div class="fadeIn fourth" align="center" style="margin-top: 5%; width: 100%;"><!--Cuarto fade-->
+                                            <input class="btn btn-md btn-outline-primary " type="submit" value="Ingresar">
                                         </div>
                                         
                                         <div class="fadeIn fifth"><!--Quinto fade-->
                                             <div class="checkbox">
                                                 <label>
-                                                    <a class="btn btn-md btn-link" href="#" role="button" data-toggle="modal" data-target="#modalContacto">Contactar con el administrador</a>
+                                                    <a class="" href="#" role="button" data-bs-toggle="modal" data-bs-target="#modalContacto">Contactar con el administrador</a>
                                                 </label>
                                             </div>
                                         </div>
@@ -60,7 +60,7 @@
                 </div>
             </div>  
             <footer class="copy">
-                <div class="copy_texto">Copyright &copy; 2021 - J&L </div>
+                <!--<div class="copy_texto">Copyright &copy; 2021 - J&L </div>-->
             </footer>
         </div>
     </div>
@@ -71,22 +71,21 @@
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Contacto</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+            <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </span>
         </div>
         <div class="modal-body">
             Para cualquier duda dirigete a: ____________________
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
         </div>
         </div>
     </div>
 </div>
     <script src="public/jquery/jquery-3.6.0.min.js"></script>
-    <script src="public/bootstrap/popper.min.js"></script>
-    <script src="public/bootstrap/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="public/sweetalert2/sweetalert2@11.js"></script>
     <script src="public/js/usuarios/login.js"></script>
 </body>

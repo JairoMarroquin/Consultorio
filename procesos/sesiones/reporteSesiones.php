@@ -7,13 +7,13 @@ $con= new Conexion();
 $conexion = $con->conectar();
 
 if(isset($_POST['generar_reporte'])){
-    header('Content-Type:text/csv; charset=latin1');
+    header('Content-Type:text/csv; charset=ISO-8859');
     header('Content-Disposition: attachment; filename="Reporte_Simple_Sesiones.csv"');
 
     $salida=fopen('php://output', 'w');
-    fputcsv($salida, array( 'Numero de Sesion', 'Primer Nombre del paciente','Segundo Nombre del Paciente','Apellido Paterno del Paciente',
-                            'Apellido Materno del Paciente', 'Primer Nombre del Psicologo','Segundo Nombre del Psicologo','Apellido Paterno del Psicologo','Apellido Materno del Psicologo', 
-                            'Tipo de Sesion', 'Dia', 'Horario', 'Sesion con cita previa'));
+    fputcsv($salida, array( utf8_decode('Numero de Sesión'), 'Primer Nombre del paciente','Segundo Nombre del Paciente','Apellido Paterno del Paciente',
+                            'Apellido Materno del Paciente', utf8_decode('Primer Nombre del Psicólogo'),utf8_decode('Segundo Nombre del Psicólogo'),utf8_decode('Apellido Paterno del Psicólogo'),utf8_decode('Apellido Materno del Psicológo'), 
+                            utf8_decode('Tipo de Sesión'), utf8_decode('Día'), 'Horario', utf8_decode('Sesión con cita previa')));
 
     $sql="SELECT 
             sesiones.id_sesion AS idSesion,
@@ -56,9 +56,9 @@ if(isset($_POST['generar_reporte'])){
         }else{
             $cita = 'No';
         }
-        fputcsv($salida, array( $reporte['idSesion'],$reporte['nombrePaciente'],$reporte['segundoNombrePaciente'],
-                                $reporte['apellidoPaciente'],$reporte['apellidoMaternoPaciente'],$reporte['nombrePsicologo'],
-                                $reporte['segundoNombrePsicologo'],$reporte['apellidoPsicologo'],$reporte['apellidoMaternoPsicologo'],
+        fputcsv($salida, array( $reporte['idSesion'],utf8_decode($reporte['nombrePaciente']),utf8_decode($reporte['segundoNombrePaciente']),
+                                utf8_decode($reporte['apellidoPaciente']),utf8_decode($reporte['apellidoMaternoPaciente']),utf8_decode($reporte['nombrePsicologo']),
+                                utf8_decode($reporte['segundoNombrePsicologo']),utf8_decode($reporte['apellidoPsicologo']),utf8_decode($reporte['apellidoMaternoPsicologo']),
                                 $reporte['sesionNombre'],$reporte['fechaHoraInicio'],$reporte['fechaHoraFin'],
                                 $cita));
     }

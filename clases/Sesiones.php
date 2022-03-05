@@ -15,14 +15,13 @@ class Sesiones extends Conexion{
             if($citasPacientesEncontradas['totalCitas'] == 0){ //valida si puede quitar cita o no
                 echo 'No hay citas pendientes de este paciente';
                 die();
-            }else{
+            }elseif($citasPacientesEncontradas['totalCitas'] > 0){
                 $respuestaGetCitas = mysqli_query($conexion, $sqlGetCitas);
                 while($getCitas = mysqli_fetch_array($respuestaGetCitas)){
                     $citasEncontradas = $getCitas['id_cita'];
                 }
                 $sqlUpdCita = "UPDATE citas set atendida = 1 WHERE id_cita = '$citasEncontradas'";
                 $respuestaCierraCita = mysqli_query($conexion, $sqlUpdCita);
-                return $respuestaCierraCita;
             }    
         }
 
@@ -33,7 +32,6 @@ class Sesiones extends Conexion{
         if($sesionesPaciente['totalPaciente'] >= 1){
             $sqlUpdPrimeraVez ="UPDATE pacientes set primera_vez = 0 WHERE id_paciente = '$idPaciente'";
             $respuestaUpdPrimeraVez = mysqli_query($conexion, $sqlUpdPrimeraVez);
-            return $respuestaUpdPrimeraVez;
         }
 
         $sql="SELECT id_psicologo FROM pacientes where id_paciente = '$idPaciente'"; //busca el valor de id_psicologo en base al id_paciente
@@ -97,6 +95,36 @@ class Sesiones extends Conexion{
     public function editarSesion($datos){
         $conexion= Conexion::conectar();
         $idSesionEditarU= $datos['idSesionEditar'];
+        $idPacienteU = $datos['id_paciente'];
+        
+        if($datos['cita'] == 1){ //busca y atiende citas dependiendo la sesion
+            $sqlGetCitas="SELECT * FROM citas WHERE id_paciente = '$idPacienteU' AND atendida = 0 AND eliminada = 0";
+            $sqlGetCitasPaciente= "SELECT COUNT(id_cita) as totalCitas FROM citas where id_paciente = '$idPacienteU' AND atendida = 0 AND eliminada = 0";
+            $respuestaGetCitasPacientes = mysqli_query($conexion, $sqlGetCitasPaciente);
+            $citasPacientesEncontradas = mysqli_fetch_assoc($respuestaGetCitasPacientes);
+
+            if($citasPacientesEncontradas['totalCitas'] == 0){ //valida si puede quitar cita o no
+                echo 'No hay citas pendientes de este paciente';
+                die();
+            }elseif($citasPacientesEncontradas['totaCitas'] > 0){
+                $respuestaGetCitas = mysqli_query($conexion, $sqlGetCitas);
+                while($getCitas = mysqli_fetch_array($respuestaGetCitas)){
+                    $citasEncontradas = $getCitas['id_cita'];
+                }
+                $sqlUpdCita = "UPDATE citas set atendida = 1 WHERE id_cita = '$citasEncontradas'";
+                $respuestaCierraCita = mysqli_query($conexion, $sqlUpdCita);
+            }    
+        }
+
+        $sqlGetSesionesPaciente= "SELECT COUNT(id_paciente) as totalPaciente FROM sesiones where id_paciente = '$idPacienteU'"; //validacion para quitar primera_vez
+        $respuestaGetSesionesPaciente= mysqli_query($conexion, $sqlGetSesionesPaciente);
+        $sesionesPaciente = mysqli_fetch_assoc($respuestaGetSesionesPaciente);
+
+        if($sesionesPaciente['totalPaciente'] >= 1){
+            $sqlUpdPrimeraVez ="UPDATE pacientes set primera_vez = 0 WHERE id_paciente = '$idPacienteU'";
+            $respuestaUpdPrimeraVez = mysqli_query($conexion, $sqlUpdPrimeraVez);
+        }
+
         $sql="UPDATE sesiones SET   tipo_sesion=?,
                                     fecha_dia=?,
                                     fecha_hora_inicio=?,

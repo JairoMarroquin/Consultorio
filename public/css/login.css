@@ -27,7 +27,7 @@ img{
     max-width: 510px;
     max-height: 510px;
     position:relative;
-    border: 1px solid rgba(0, 217, 255, 0.801);
+    border: 1px solid #0059A9;
     border-radius: 20px;
     background: url(https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/19c9e949671425.58bb773658541.jpg);
     box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19)
@@ -44,8 +44,10 @@ img{
     margin-top: 10%;
 }
 .titulo-login{
-  margin-left: 10%;
-  margin-bottom: 7%;
+  color: #003565;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
 }
 .copy{
   font-size: 20px;

@@ -7,7 +7,7 @@ $contraPlana= $_POST['password'];
 $password= password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 $Usuarios = new Usuarios();
-echo $Usuarios -> loginUsuario($usuario, $password, $contraPlana);
+echo $Usuarios -> loginUsuario($usuario, $contraPlana);
 
 
 ?>

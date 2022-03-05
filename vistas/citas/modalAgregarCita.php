@@ -68,21 +68,21 @@ $respuesta2 = mysqli_query($conexion, $sql2);
                 <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="agregarCitasLabel">Registrar cita</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+                    <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </span>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-5">
                             <label for="paciente">Seleccionar paciente(*)</label>
-                            <select class="form-control" name="paciente" id="paciente" onchange="mostrarDatosPsicologo(this.value)" required>
+                            <select class="form-control form-select" name="paciente" id="paciente" onchange="mostrarDatosPsicologo(this.value)" required>
                                 <option value="">Selecciona el paciente</option>
                                 <?php
                                 while($datosPaciente = mysqli_fetch_array($respuesta)){
                                     if($_SESSION['usuario']['rol'] == 1 && $datosPaciente['eliminado'] == 0 && $datosPaciente['estatusPaciente'] == 1){
                                 ?>
-                                <option value=" <?php echo $datosPaciente['idPaciente'];?> ">
+                                <option value="<?php echo $datosPaciente['idPaciente'];?>">
                                     <?php echo $datosPaciente['nombrePaciente'];?> <?php echo $datosPaciente['segundoNombrePac'];?> <?php echo $datosPaciente['paternoPac']; ?> <?php echo $datosPaciente['maternoPac'];?>
                                 </option>
                                 <?php
@@ -100,7 +100,7 @@ $respuesta2 = mysqli_query($conexion, $sql2);
                         <div class="col-sm-2"></div>
                         <div class="col-sm-5">
                             <label for="tipo_sesion">Seleccionar el tipo de sesión(*)</label>
-                            <select class="form-control" name="tipo_sesion" id="tipo_sesion" required>
+                            <select class="form-control form-select" name="tipo_sesion" id="tipo_sesion" required>
                                 <option value="">Seleccionar el tipo de sesión</option>
                                 <?php
                                     while($tipoSesion = mysqli_fetch_array($respuesta2)){
@@ -132,7 +132,7 @@ $respuesta2 = mysqli_query($conexion, $sql2);
                         </div>
                         <div class="col-sm-4 text-center">
                             <span class="lead">
-                                <span id="txtHint" class="badge badge-pill badge-primary"></span>
+                                <span id="txtHint" class="badge rounded-pill bg-primary"></span>
                             </span>
                             <hr>
                         </div>
@@ -161,7 +161,7 @@ $respuesta2 = mysqli_query($conexion, $sql2);
                 <h7 style="color: #FF0B0B; font-size: 14px;">Los campos marcados con (*) son obligatorios.</h7>
                 </div>
                 <div class="modal-footer">
-                    <span class="btn btn-outline-secondary" data-dismiss="modal">Close</span>
+                    <span class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</span>
                     <button class="btn btn-outline-primary">Guardar</button>
                 </div>
                 </div>

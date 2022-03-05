@@ -3,7 +3,7 @@ include "Conexion.php";
 
     class Usuarios extends Conexion {
 
-        public function loginUsuario($usuario, $password, $contraPlana){
+        public function loginUsuario($usuario, $contraPlana){
             $conexion = Conexion::conectar();
             $sqlValidaFechaVencimiento="SELECT * FROM contrato";
             $respuestaValidaFechaVencimiento = mysqli_query($conexion, $sqlValidaFechaVencimiento);
@@ -22,7 +22,7 @@ include "Conexion.php";
                         
                         while($row= mysqli_fetch_array($respuestaContraseña)){
                             if($row['bit_activo'] == 1){
-                                if(password_verify($contraPlana, $row['contraseña'])){ //comprueba que la contraseña del usuario sea la correcta
+                                if(password_verify($contraPlana, $row['contrasena'])){ //comprueba que la contraseña del usuario sea la correcta
                                     if(mysqli_num_rows($respuestaContraseña)>0){
                                         $_SESSION['usuario']['nombre'] = $row['primer_nombre'];
                                         $_SESSION['usuario']['segundo_nombre'] = $row['segundo_nombre']; //toma los datos de la columna primer_nombre y las guarda en $_SESSION['usuario']['nombre']
@@ -33,6 +33,8 @@ include "Conexion.php";
                                         return 1;
                                     }
                                 }else {
+                                    echo $contraPlana;
+                                    die();
                                     echo 'El usuario y/o contraseña no es válida (CNV)';
                                 }
                             }else{
@@ -108,7 +110,7 @@ include "Conexion.php";
                 values (?,?,?,?,?,?,?,?,?)";
                 $query= $conexion->prepare($sql);
                 $query-> bind_param('sssssssii',   $datos['primer_nombre'],$datos['segundo_nombre'],$datos['apellido_paterno'],
-                                                            $datos['apellido_materno'], $fecha, $datos['usuario'],$datos['contraseña'],
+                                                            $datos['apellido_materno'], $fecha, $datos['usuario'],$datos['contrasena'],
                                                             $datos['bit_psicologo'],$datos['id_rol']);
                 $respuesta= $query->execute();
                 $query->close();
@@ -197,12 +199,13 @@ include "Conexion.php";
                                             sexo=?, 
                                             telefono=?, 
                                             correo=?, 
-                                            id_psicologo=?
+                                            id_psicologo=?,
+                                            id_estatus=?
                 WHERE id_paciente = '$idPacienteU'";
                 $query = $conexion->prepare($sql);
-                $query->bind_param('ssssssssi', $datos['primer_nombre'],$datos['segundo_nombre'],$datos['apellido_paterno'],
+                $query->bind_param('ssssssssii', $datos['primer_nombre'],$datos['segundo_nombre'],$datos['apellido_paterno'],
                                 $datos['apellido_materno'],$datos['fecha_nacimiento'],$datos['sexo'],
-                                $datos['telefono'],$datos['correo'],$datos['psicologo_encargado']);
+                                $datos['telefono'],$datos['correo'],$datos['psicologo_encargado'],$datos['id_estatus']);
 
                 $respuesta= $query->execute();
                 $query -> close();
@@ -265,7 +268,7 @@ include "Conexion.php";
                     WHERE id_usuario = '$idUsuarioU'";
                 $query= $conexion-> prepare($sql);
                 $query->bind_param('sssssii',  $datos['primerNombre'],$datos['segundoNombre'],$datos['apellidoPaterno'],
-                                                $datos['apellidoMaterno'],$datos['contraseña'],
+                                                $datos['apellidoMaterno'],$datos['contrasena'],
                                                 $datos['psicologo'],$datos['usuarioRol']);
 
                 $respuesta= $query ->execute();
@@ -330,7 +333,7 @@ include "Conexion.php";
                         WHERE id_usuario = '$idUsuarioU'";
                     $query= $conexion-> prepare($sql);
                     $query->bind_param('ssssssii',  $datos['primerNombre'],$datos['segundoNombre'],$datos['apellidoPaterno'],
-                                                    $datos['apellidoMaterno'],$datos['usuario'],$datos['contraseña'],
+                                                    $datos['apellidoMaterno'],$datos['usuario'],$datos['contrasena'],
                                                     $datos['psicologo'],$datos['usuarioRol']);
 
                     $respuesta= $query ->execute();
@@ -357,7 +360,7 @@ include "Conexion.php";
 
                     $query= $conexion-> prepare($sql);
                     $query->bind_param('sssss',  $datos['primer_nombre'],$datos['segundo_nombre'],$datos['apellido_paterno'],
-                                        $datos['apellido_materno'],$datos['contraseña']);
+                                        $datos['apellido_materno'],$datos['contrasena']);
 
                     $respuesta= $query ->execute();
                     $query -> close();
@@ -399,7 +402,7 @@ include "Conexion.php";
                         WHERE id_usuario = '$idUsuarioEditar'";
                     $query= $conexion-> prepare($sql);
                     $query->bind_param('ssssss',  $datos['primer_nombre'],$datos['segundo_nombre'],$datos['apellido_paterno'],
-                                                    $datos['apellido_materno'],$datos['usuario'],$datos['contraseña']);
+                                                    $datos['apellido_materno'],$datos['usuario'],$datos['contrasena']);
 
                     $respuesta= $query ->execute();
                     $query -> close();

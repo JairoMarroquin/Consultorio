@@ -23,7 +23,10 @@ function eliminarCita(idCita){
     });
 }
 
+
+
 function confirmDelete(idCita){
+    event.preventDefault()
     Swal.fire({
         title: '¿Seguro que quieres eliminar la cita?',
         text: "No podrás recuperar el registro.",

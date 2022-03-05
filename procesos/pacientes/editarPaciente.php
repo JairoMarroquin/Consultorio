@@ -9,7 +9,8 @@ $datos= array(
     'sexo'=>$_POST['sexou'],
     'telefono'=>$_POST['telefonou'],
     'correo'=>$_POST['correou'],
-    'psicologo_encargado'=>$_POST['psicologo_encargadou']
+    'psicologo_encargado'=>$_POST['psicologo_encargadou'],
+    'id_estatus'=>$_POST['estatus_paciente']
 );
 
 include "../../clases/Usuarios.php";

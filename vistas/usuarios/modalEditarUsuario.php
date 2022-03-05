@@ -5,9 +5,9 @@
         <div class="modal-header">
             <input type="hidden" name="idUsuarioEditar" id="idUsuarioEditar" value="">
             <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+            <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </span>
         </div>
         <div class="modal-body">
             <div class="row">
@@ -42,31 +42,31 @@
                 <div class="col-sm-4">
                     <hr>
                     <p>¿El usuario será psicólogo?</p>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input class="custom-control-input" type="radio" name="esPsicologou" id="radioSiu" value = "1">
-                        <label class="custom-control-label" for="radioSiu">Si</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="esPsicologou" id="radioSiu" value = "1">
+                        <label class="form-check-label" for="radioSiu">Si</label>
                     </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input class="custom-control-input" type="radio" name="esPsicologou" id="radioNou" value = "0">
-                        <label class="custom-control-label" for="radioNou">No</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="esPsicologou" id="radioNou" value = "0">
+                        <label class="form-check-label" for="radioNou">No</label>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <hr>
                     <p>¿Que rol tendrá el usuario?</p>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input class="custom-control-input" type="radio" name="rolCu" id="rolAdu" value = "2">
-                        <label class="custom-control-label" for="rolAu">Administrador</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rolCu" id="rolAdu" value = "2">
+                        <label class="form-check-label" for="rolAdu">Administrador</label>
                     </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input class="custom-control-input" type="radio" name="rolCu" id="rolCou" value = "3">
-                        <label class="custom-control-label" for="rolCu">Colaborador</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rolCu" id="rolCou" value = "3">
+                        <label class="form-check-label" for="rolCou">Colaborador</label>
                     </div>
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-            <span class="btn btn-outline-danger" data-dismiss="modal">Cerrar</span>
+            <span class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</span>
             <button class="btn btn-outline-primary">Guardar</button>
         </div>
         </div>

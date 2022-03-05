@@ -4,9 +4,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Descargar reporte de Sesiones</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+                    <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </span>
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <span class="btn btn-outline-danger" data-dismiss="modal">Cerrar</span>
+                    <span class="btn btn-outline-danger" data-bs-dismiss="modal">Cerrar</span>
                     <input type="submit" name="generar_reporte" class="btn btn-outline-success"></input>
                 </div>
             </div>

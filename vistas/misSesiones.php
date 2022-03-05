@@ -8,8 +8,8 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] > 1){
     <div class="card-body p-5">
       <h1 class="fw-light">Registrar una sesión</h1>
       <hr>
-      <button class="btn btn-outline-primary" data-toggle="modal" data-target="#modalAgregarSesiones"><span class="far fa-calendar-plus"></span> Registrar sesión</button>
-      <button class="btn btn-outline-success" data-toggle="modal" data-target="#modalReporteSesion"><span class="fas fa-file-download"></span> Descargar reporte</button>
+      <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarSesiones"><span class="far fa-calendar-plus"></span> Registrar sesión</button>
+      <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalReporteSesion"><span class="fas fa-file-download"></span> Descargar reporte</button>
       <hr>
       <div id="tablaSesionesLoad"></div>
   </div>

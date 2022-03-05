@@ -6,6 +6,7 @@ body {
   background-size: cover;
   -o-background-size: cover;
   background-attachment: fixed;
+  color: #003D74;
   }
 
 .table td, .table th {
@@ -14,6 +15,7 @@ body {
 
 .version{
   display: inline-block;
+  color: #003565;
 }
 
 .container #tarjeta_cita_pendiente_inicio{
@@ -81,4 +83,21 @@ body {
 .container #tarjeta_cita_pendiente_vencida_inicio:hover p{
   transition: all 0.75s;
   color: #1a0606;
+}
+
+/*tabla pacientes*/
+
+.reports{
+  overflow: hidden; /*Clear the floated children */
+}
+.reports .display{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: solid 1px gray;
+    background: white;
+}
+.reports #btnReportes{
+
+  width: 3rem;
 }
