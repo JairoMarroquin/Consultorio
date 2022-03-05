@@ -63,15 +63,22 @@ $respuesta = mysqli_query($conexion, $sql);
             <td><?php echo $mostrar['sesionNombre'];?></td>
             <td><?php echo $mostrar['fechaDia'];?></td>
             <td><?php echo $mostrar['fechaHoraInicio'];?> a <?php echo $mostrar['fechaHoraFin'];?></td>
-            <td><?php if($mostrar['cita'] == 1){echo "SÍ";}else{echo "NO"; }?></td>
-            <td><h3>
-                <button class="btn btn-outline-info badge badge-pill" style="width: 60px;" data-toggle="modal" data-target="#modalEditarSesiones" onClick="obtenerDatosSesionEditar(<?php echo $mostrar['idSesion'];?>)"><span class="far fa-edit"></span></button>
-                <button class="btn btn-outline-danger badge badge-pill" style="width: 60px;"onclick="return confirmDelete(<?php echo $mostrar['idSesion'];?>);"><span class="far fa-trash-alt"></span></button>
-            </h3></td>
+            <td align="center"><?php if($mostrar['cita'] == 1){?><i style="color:green;" class="fas fa-check"><?php }else{?><i style="color:red;" class="fas fa-times"><?php }?></td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><h6 class="dropdown-header">Acciones</h6></li>
+                        <li><a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalEditarSesiones" onClick="obtenerDatosSesionEditar(<?php echo $mostrar['idSesion'];?>)">Editar</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a href="" style="color:red;" onclick="return confirmDelete(<?php echo $mostrar['idSesion'];?>);" class="dropdown-item">Eliminar</a></li>
+                    </ul>
+                </div>
+            </td>
     </tr>     
 
     <?php 
-        }elseif($_SESSION['usuario']['rol'] == $mostrar['idPsicologo'] && $mostrar['mostrar'] == 1){
+        }elseif($_SESSION['usuario']['id'] == $mostrar['idPsicologo'] && $mostrar['mostrar'] == 1){
             ?>
             <tr>
                 <td><?php echo $mostrar['idSesion'];?></td>
@@ -82,8 +89,8 @@ $respuesta = mysqli_query($conexion, $sql);
                 <td><?php echo $mostrar['fechaHoraInicio'];?> a <?php echo $mostrar['fechaHoraFin'];?></td>
                 <td><?php if($mostrar['cita'] == 1){echo "SÍ";}else{echo "NO"; }?></td>
                 <td><h3>
-                    <button class="btn btn-outline-info badge badge-pill" style="width: 60px;" data-toggle="modal" data-target="#modalEditarSesiones" onClick="obtenerDatosSesionEditar(<?php echo $mostrar['idSesion'];?>)"><span class="far fa-edit"></span></button>
-                    <button class="btn btn-outline-danger badge badge-pill" style="width: 60px;"onclick="return confirmDelete(<?php echo $mostrar['idSesion'];?>);"><span class="far fa-trash-alt"></span></button>
+                    <button class="btn btn-outline-info" style="width: 60px;" data-bs-toggle="modal" data-bs-target="#modalEditarSesiones" onClick="obtenerDatosSesionEditar(<?php echo $mostrar['idSesion'];?>)"><span class="far fa-edit"></span></button>
+                    <button class="btn btn-outline-danger" style="width: 60px;"onclick="return confirmDelete(<?php echo $mostrar['idSesion'];?>);"><span class="far fa-trash-alt"></span></button>
                 </h3></td>
         </tr>     
     

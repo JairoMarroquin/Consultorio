@@ -4,9 +4,9 @@
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Agregar Usuario</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+            <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </span>
         </div>
         <div class="modal-body">
             <div class="row">
@@ -41,32 +41,32 @@
                 <div class="col-sm-4">
                     <hr>
                     <p>¿El usuario será psicólogo?</p>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input class="custom-control-input" type="radio" name="esPsicologo" id="radioSi" value = "1" checked>
-                        <label class="custom-control-label" for="radioSi">Si</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="esPsicologo" id="radioSi" value = "1" checked>
+                        <label class="form-check-label" for="radioSi">Si</label>
                     </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input class="custom-control-input" type="radio" name="esPsicologo" id="radioNo" value = "0">
-                        <label class="custom-control-label" for="radioNo">No</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="esPsicologo" id="radioNo" value = "0">
+                        <label class="form-check-label" for="radioNo">No</label>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <hr>
                     <p>¿Que rol tendrá el usuario?</p>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input class="custom-control-input" type="radio" name="rol" id="rolA" value = "2" checked>
-                        <label class="custom-control-label" for="rolA">Administrador</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rol" id="rolA" value = "2" checked>
+                        <label class="form-check-label" for="rolA">Administrador</label>
                     </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input class="custom-control-input" type="radio" name="rol" id="rolC" value = "3">
-                        <label class="custom-control-label" for="rolC">Colaborador</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rol" id="rolC" value = "3">
+                        <label class="form-check-label" for="rolC">Colaborador</label>
                     </div>
                 </div>
             </div>
             <h7 style="color: red; font-size: 14px;">Los campos marcados con (*) son obligatorios.</h7>
         </div>
         <div class="modal-footer">
-            <span class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</span>
+            <span class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</span>
             <button class="btn btn-outline-primary">Guardar</button>
         </div>
         </div>

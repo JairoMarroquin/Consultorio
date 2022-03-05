@@ -23,6 +23,7 @@ function desactivarUsuario(idUsuario){
 }
 
 function confirmDelete(idUsuario){
+    event.preventDefault()
     swal.fire({
         title: 'Desactivar usuario',
         text: "Podrás reactivarlo después.",
@@ -41,6 +42,7 @@ function confirmDelete(idUsuario){
 }
 
 function activarUsuario(idUsuario){
+    event.preventDefault()
     id= {"id":idUsuario};
     $.ajax({
         method: "POST",
@@ -61,6 +63,7 @@ function activarUsuario(idUsuario){
 }
 
 function confirmActivate(idUsuario){
+    event.preventDefault()
     Swal.fire({
         title: 'Activar usuario',
         text: "Podrás desactivarlo después.",
@@ -90,7 +93,7 @@ function agregarUsuario(){
                 $("#frmAgregarUsuario")[0].reset();
                 swal.fire("¡Listo!","Usuario agregado con éxito", "success");
             }else{
-                swal.fire(":(", "Error al agregar usuario: " + respuesta, "error");
+                swal.fire(":(", "" + respuesta, "error");
             }
         }
     });
@@ -98,7 +101,7 @@ function agregarUsuario(){
 }
 
 function obtenerIDUsuarioDesactivar(idUsuarioDesactivar){ 
-    $('#idUsuarioDesactivar').val('');
+    $('#idUsuarioDesactivar').val('')
     $.ajax({
         type: "POST",
         data: "idUsuarioDesactivar="+idUsuarioDesactivar,
@@ -111,7 +114,7 @@ function obtenerIDUsuarioDesactivar(idUsuarioDesactivar){
 }
 
 function obtenerIDUsuarioActivar(idUsuarioActivar){ 
-    $('#idUsuarioActivar').val('');
+    $('#idUsuarioActivar').val('')
     $.ajax({
         type: "POST",
         data: "idUsuarioActivar="+idUsuarioActivar,
@@ -168,9 +171,9 @@ function editarUsuario(){
             if(respuesta == 1){
                 $('#tablaUsuariosLoad').load("usuarios/tablaUsuarios.php");
                 $("#modalEditarUsuario").modal('hide');
-                swal.fire("¡Listo!", "Paciente actualizado con éxito", "success");
+                swal.fire("¡Listo!", "Usuario actualizado con éxito", "success");
             }else{
-                swal.fire(":(", "Error al actualizar al paciente: "+respuesta, "error");
+                swal.fire(":(", ""+respuesta, "error");
             }
         }
     });

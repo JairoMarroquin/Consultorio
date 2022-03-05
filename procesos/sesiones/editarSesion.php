@@ -5,6 +5,7 @@ $Sesiones = new Sesiones();
 
 $datos= array(
 		'idSesionEditar'=>$_POST['idSesionEditar'],
+		'id_paciente'=>$_POST['idPaciente'],
 		'cita'=>$_POST['citau'],
 		'tipo_sesion'=>$_POST['tipo_sesionu'],
 		'dia'=>$_POST['diau'],

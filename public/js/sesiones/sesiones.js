@@ -21,6 +21,7 @@ function eliminarSesion(idSesion){
 }
 
 function confirmDelete(idSesion){
+    event.preventDefault()
     Swal.fire({
         title: '¿Seguro que quieres eliminar la sesión?',
         text: "No podrás recuperar el registro.",

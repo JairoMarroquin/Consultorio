@@ -23,6 +23,7 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] > 0){
             pacientes.segundo_nombre AS segundoNombrePaciente,
             pacientes.apellido_paterno AS paternoPaciente,
             pacientes.apellido_materno AS maternoPaciente,
+            pacientes.eliminado,
             psicologo.id_usuario as idPsicologo,
             psicologo.primer_nombre as nombrePsicologo,
             psicologo.segundo_nombre as segundoNombrePsicologo,
@@ -56,6 +57,7 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] > 0){
             pacientes.segundo_nombre AS segundoNombrePaciente,
             pacientes.apellido_paterno AS paternoPaciente,
             pacientes.apellido_materno AS maternoPaciente,
+            pacientes.eliminado,
             psicologo.id_usuario as idPsicologo,
             psicologo.primer_nombre as nombrePsicologo,
             psicologo.segundo_nombre as segundoNombrePsicologo,
@@ -76,7 +78,7 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] > 0){
   }
 
   $respuesta = mysqli_query($conexion, $sql);
-  $numeroCitas = mysqli_num_rows($respuesta);
+  $numeroCitas = mysqli_num_rows($respuesta); //cuenta la cantidad de citas pendientes que hay
   $fechaActual= date("Y-m-d H:i");
   ?>
 
@@ -94,7 +96,7 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] > 0){
             }else{
               for ($i=1; $i < 6; $i++) {
                 while($citas = mysqli_fetch_array($respuesta)){
-                    if($_SESSION['usuario']['id'] == 1){
+                    if($_SESSION['usuario']['id'] == 1 && $citas['eliminado'] == 0){
                 ?>
                     <div class="card text-center text-dark bg-light" id="tarjeta_cita_pendiente_inicio">
                       <div class="card-body">
@@ -104,23 +106,27 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] > 0){
                           <?php
                           $fechaDiaVencimiento = $citas['dia'];
                           $fechaHoraVencimiento = $citas['hora'];
+                          $fechaDiaVencimientoFormato= date_create($fechaDiaVencimiento); //creo el objeto fecha para el DIA
+                          $fechaVencimientoFinal = date_format($fechaDiaVencimientoFormato, 'd-m-Y'); //le doy el formato a la fecha
                           $fechaVencimiento = $fechaDiaVencimiento.' '.$fechaHoraVencimiento;
+
                             if($fechaActual > $fechaVencimiento){ //si la cita esta vencida que marque la fecha en rojo
                           ?>
-                          <span class="fecha_vencida"><?php echo $citas['dia'];?> <?php echo $citas['hora'];?></span>, <?php echo $citas['nombreSesion'];?>
+                          <span class="fecha_vencida"><?php echo $fechaVencimientoFinal;?> <?php echo $citas['hora'];?></span>, <?php echo $citas['nombreSesion'];?>
                           <?php
                             }else{
                           ?>
-                          <span class="fecha_cita"><?php echo $citas['dia'];?> <?php echo $citas['hora'];?></span>, <?php echo $citas['nombreSesion'];?>
+                          <span class="fecha_cita"><?php echo $fechaVencimientoFinal;?> <?php echo $citas['hora'];?></span>, <?php echo $citas['nombreSesion'];?>
                           <?php
                             }
                           ?>
                         </p>
                         <p class="card-text"><?php if($citas['notas'] == ''){echo 'Sin notas';}else{echo $citas['notas'];}?></p>
+                        <a href="../vistas/citas.php">Ir a Citas</a>
                       </div>
                     </div>
                 <?php 
-                    }elseif($_SESSION['usuario']['id'] == $citas['idPsicologo']){
+                    }elseif($_SESSION['usuario']['id'] == $citas['idPsicologo'] && $citas['eliminado'] == 0){
                       ?>
                           <div class="card text-center text-dark bg-light" id="tarjeta_cita_pendiente_inicio">
                             <div class="card-body">
@@ -130,19 +136,22 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] > 0){
                                 <?php
                                 $fechaDiaVencimiento = $citas['dia'];
                                 $fechaHoraVencimiento = $citas['hora'];
+                                $fechaDiaVencimientoFormato= date_create($fechaDiaVencimiento); //creo el objeto fecha para el DIA
+                                $fechaVencimientoFinal = date_format($fechaDiaVencimientoFormato, 'd-m-Y'); //le doy el formato a la fecha
                                 $fechaVencimiento = $fechaDiaVencimiento.' '.$fechaHoraVencimiento;
                                   if($fechaActual > $fechaVencimiento){ //si la cita esta vencida que marque la fecha en rojo
                                 ?>
-                                <span class="fecha_vencida"><?php echo $citas['dia'];?> <?php echo $citas['hora'];?></span>, <?php echo $citas['nombreSesion'];?>
+                                <span class="fecha_vencida"><?php echo $fechaVencimientoFinal;?> <?php echo $citas['hora'];?></span>, <?php echo $citas['nombreSesion'];?>
                                 <?php
                                   }else{
                                 ?>
-                                <span class="fecha_cita"><?php echo $citas['dia'];?> <?php echo $citas['hora'];?></span>, <?php echo $citas['nombreSesion'];?>
+                                <span class="fecha_cita"><?php echo $fechaVencimientoFinal;?> <?php echo $citas['hora'];?></span>, <?php echo $citas['nombreSesion'];?>
                                 <?php
                                   }
                                 ?>
                               </p>
                               <p class="card-text"><?php if($citas['notas'] == ''){echo 'Sin notas';}else{echo $citas['notas'];}?></p>
+                              <a href="../vistas/misCitas.php">Ir a Citas</a>
                             </div>
                           </div>
                       <?php                                  

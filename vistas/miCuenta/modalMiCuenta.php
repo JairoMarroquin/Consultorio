@@ -5,9 +5,9 @@
             <div class="modal-header">
                 <input type="hidden" name="idCuentaEditar" id="idCuentaEditar" value="<?php echo $_SESSION['usuario']['id'];?>">
                 <h5 class="modal-title" id="exampleModalLongTitle">Editar cuenta</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+                <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </span>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <span class="btn btn-outline-danger" data-dismiss="modal">Cerrar</span>
+                <span class="btn btn-outline-danger" data-bs-dismiss="modal">Cerrar</span>
                 <button class="btn btn-outline-primary" onClick="confirmAccEdit()">Guardar cambios</button>
             </div>
             </div>

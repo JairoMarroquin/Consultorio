@@ -22,7 +22,12 @@ function eliminarPaciente(idPaciente){
     return false;
 }
 
+document.getElementById("optPac").addEventListener("click", function (event) {
+    event.preventDefault();
+});
+
 function confirmDelete(idPaciente){
+    event.preventDefault()
     Swal.fire({
         title: '¿Seguro que quieres eliminar el paciente?',
         text: "No podrás recuperar el registro.",
@@ -109,9 +114,6 @@ function obtenerIDPaciente(idPaciente){
     });
 }
 
-//$('#frmEditarPrimeraVezPaciente').on('submit', editarPrimeraVezPaciente);
-
-
 function obtenerIDPacienteEliminar(idPacienteEliminar){ 
     $('#idPacienteEliminar').val('');
     $.ajax({
@@ -124,7 +126,6 @@ function obtenerIDPacienteEliminar(idPacienteEliminar){
         }
     });
 }
-//$('#frmEliminarPaciente').on('submit', eliminarPaciente);
 
 function obtenerDatosPacienteEditar(idPacienteEditar){ 
     $('#frmEditarPaciente').val('');
@@ -144,6 +145,7 @@ function obtenerDatosPacienteEditar(idPacienteEditar){
             $('#telefonou').val(respuesta['telefono']);
             $('#correou').val(respuesta['correo']);
             $('#psicologo_encargadou').val(respuesta['idPsicologo']); 
+            $('#estatus_paciente').val(respuesta['estatusPaciente']);
         }
     });
 }

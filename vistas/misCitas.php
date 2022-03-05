@@ -10,7 +10,7 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] > 1){
     <div class="card-body p-5">
       <h1 class="fw-light">Citas pendientes</h1>
       <hr>
-      <button class="btn btn-outline-primary" data-toggle="modal" data-target="#agregarCitas"><span class="fas fa-calendar-plus"></span> Registrar Cita</button>
+      <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#agregarCitas"><span class="fas fa-calendar-plus"></span> Registrar Cita</button>
       <hr>
       <div id="tablaCitasLoad"></div>
   </div>

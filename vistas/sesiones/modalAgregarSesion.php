@@ -56,7 +56,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Registrar Sesión</h5>
-                            <span type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </span>
                         </div>
@@ -64,7 +64,7 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <label for="paciente">Seleccionar paciente(*)</label>
-                                    <select class="form-control" name="paciente" id="paciente" onchange="mostrarDatosPsicologo(this.value)" required>
+                                    <select class="form-control form-select" name="paciente" id="paciente" onchange="mostrarDatosPsicologo(this.value)" required>
                                         <option value="">Selecciona el paciente</option>
                                         <?php
                                             while($datosPaciente = mysqli_fetch_array($respuesta)){
@@ -80,18 +80,18 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
-                                    <div class="row justfy-content-center">
+                                    <div class="row justify-content-center">
                                         <label for="cita">¿La sesión tuvo cita previa?</label>
                                     </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" name="cita" id="citaSi" value = "1" checked>
-                                        <label class="custom-control-label" for="citaSi">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="cita" id="citaSi" value = "1" checked>
+                                        <label class="form-check-label" for="citaSi">
                                             Si
                                         </label>
                                     </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" name="cita" id="citaNo" value="2">
-                                        <label class="custom-control-label" for="citaNo">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="cita" id="citaNo" value="2">
+                                        <label class="form-check-label" for="citaNo">
                                             No
                                         </label>
                                     </div>
@@ -100,15 +100,15 @@
                                     <div class="row">
                                         <label for="tipo_sesion">Tipo de Sesión</label>
                                     </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" name="tipo_sesion" id="ind" value = "1" checked>
-                                        <label class="custom-control-label" for="ind">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tipo_sesion" id="ind" value = "1" checked>
+                                        <label class="form-check-label" for="ind">
                                             Individual
                                         </label>
                                     </div>
-                                    <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" name="tipo_sesion" id="pareja" value="2">
-                                        <label class="custom-control-label" for="pareja">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tipo_sesion" id="pareja" value="2">
+                                        <label class="form-check-label" for="pareja">
                                             En Pareja
                                         </label>
                                     </div>
@@ -130,7 +130,7 @@
                                 </div>
                                 <div class="col-sm-4 text-center">
                                     <span class="lead">
-                                        <span id="txtHint" class="badge badge-pill badge-primary"></span>
+                                        <span id="txtHint" class="badge rounded-pill bg-primary"></span>
                                     </span>
                                     <hr>
                                 </div>
@@ -156,7 +156,7 @@
                         </div>
 
                         <div class="modal-footer">
-                            <span class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</span> <!--se pone span por el onSubmit, si se da clic en cerrar tambien se guardaria el paciente-->
+                            <span class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</span> <!--se pone span por el onSubmit, si se da clic en cerrar tambien se guardaria el paciente-->
                             <button class="btn btn-outline-primary">Guardar Datos</button>
                         </div>
 

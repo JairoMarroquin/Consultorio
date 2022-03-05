@@ -13,7 +13,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Agregar nuevo paciente</h5>
-                    <span type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </span>
                 </div>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-sm-4">
                             <label for="psicologo_encargado">Asignar Piscólogo(*)</label>
-                            <select class="form-control" name="psicologo_encargado" id="psicologo_encargado" required>
+                            <select class="form-control form-select" name="psicologo_encargado" id="psicologo_encargado" required>
                                 <option value="">Seleccione al psicólogo</option>
                                 <?php
                                     while($datosPsicologo = mysqli_fetch_array($respuesta)){
@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <span class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</span> <!--se pone span por el onSubmit, si se da clic en cerrar tambien se guardaria el paciente-->
+                    <span class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</span> <!--se pone span por el onSubmit, si se da clic en cerrar tambien se guardaria el paciente-->
                     <button class="btn btn-outline-primary">Guardar Datos</button>
                 </div>
 

@@ -11,7 +11,7 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] > 1){
       <div class="card-body p-5">
         <h1 class="fw-light">Administrar pacientes</h1>
         <hr>
-        <button class="btn btn-outline-primary" data-toggle="modal" data-target="#modalAgregarPacientes"><span class="fas fa-user-plus"></span> Agregar Paciente</button>
+        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarPacientes"><span class="fas fa-user-plus"></span> Agregar Paciente</button>
         <hr>
         <div id="tablaPacientesLoad"></div>
     </div>
@@ -22,7 +22,6 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] > 1){
 include "footer.php";
 include "pacientes/modalAgregar.php";
 include "pacientes/modalEditarPaciente.php";
-include "pacientes/modalEditarPrimeraVez.php";
 ?>
 
 <script src="../public/js/usuarios/pacientes.js"></script>
