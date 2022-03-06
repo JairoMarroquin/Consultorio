@@ -16,16 +16,15 @@
     <link rel="stylesheet" href="../public/datatable/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../public/fontawesome/css/all.css">
     <link rel="stylesheet" href="../public/datatable/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="../public/materialize/css/materialize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400&display=swap" rel="stylesheet">
     <title>Consultorio</title>
 </head>
 <body>
   
-<nav class="navbar navbar-expand-lg navbar-static-top navbar-dark bg-dark" style="font-family: 'Titillium Web', sans-serif; font-size: 19px;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="font-family: 'Titillium Web', sans-serif; font-size: 19px;">
   <div class="container-fluid" style = "width: 200%;">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -43,7 +42,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
               <ul class="navbar-nav">
                   <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <a class="nav-link dropdown-menu" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Pacientes
                       </a>
                       <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
@@ -59,15 +58,15 @@
               <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                        <a class="dropdown-trigger" data-target="pacientes_admin" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                           Pacientes
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="pacientes.php"><span class="fas fa-list-ul"></span> Pacientes</a></li>
-                            <li><a class="dropdown-item" href="citas.php"><span class="far fa-calendar-alt"></span> Citas de pacientes</a></li>
-                            <li><a class="dropdown-item" href="sesiones.php"><span class="far fa-calendar-check"></span> Registrar Sesión</a></li>
-                        </ul>
                     </li>
+                    <ul class="dropdown-content" aria-labelledby="navbarDropdown" id="pacientes_admin">
+                        <li><a class="dropdown-item" href="pacientes.php"><span class="fas fa-list-ul"></span> Pacientes</a></li>
+                        <li><a class="dropdown-item" href="citas.php"><span class="far fa-calendar-alt"></span> Citas de pacientes</a></li>
+                        <li><a class="dropdown-item" href="sesiones.php"><span class="far fa-calendar-check"></span> Registrar Sesión</a></li>
+                    </ul>
                 </ul>
               </div>
           <?php } if($_SESSION['usuario']['rol'] == 1 || $_SESSION['usuario']['rol'] == 2){ //Si rol = 1 puede ver Administración y Admin Usuarios, si rol =2 no puede verlos ?>
@@ -126,7 +125,7 @@
     </div>
   </div>
 </nav>
-
+<!-- Merriweather Sans   -->
 <script src="../public/js/miCuenta/miCuenta.js"></script>
-<div style="font-family: 'Merriweather Sans', sans-serif;">
+<div style="font-family: 'Cabin', sans-serif;">
 

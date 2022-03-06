@@ -9,7 +9,7 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1){
   <div class="container">
     <div class="card border-0 shadow my-5 mx-auto" >
       <div class="card-body p-5">
-        <h1 class="fw-light">Administrar pacientes</h1>
+        <h3 class="fw-light">Administrar pacientes</h3>
         <hr>
         <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarPacientes"><span class="fas fa-user-plus"></span> Agregar Paciente</button>
         <hr>
