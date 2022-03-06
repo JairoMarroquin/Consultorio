@@ -85,9 +85,9 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] > 0){
     <div class="container" style = "width: 200%;">
       <div class="card border-0 shadow my-5">
         <div class="card-body p-5">
-          <h1 class="fw-light">Inicio</h1>
+          <h2 class="fw-light">Inicio</h2>
           <hr>
-          <h3 class="fw-light">Citas pendientes</h3>
+          <h4 class="fw-light">Citas pendientes</h4>
             <?php
             if($numeroCitas == 0 && $_SESSION['usuario']['rol'] == 1){
               ?><h4 style="text-align: center; color: #630000; margin-top:10%; text-decoration: underline;"><a href="../vistas/citas.php">No hay citas pendientes.</a></h4><?php
@@ -101,7 +101,7 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] > 0){
                     <div class="card text-center text-dark bg-light" id="tarjeta_cita_pendiente_inicio">
                       <div class="card-body">
                         <h5 class="card-header mb-2"><?php echo $citas['nombrePaciente'];?> <?php echo $citas['segundoNombrePaciente'];?> <?php echo $citas['paternoPaciente'];?> <?php echo $citas['maternoPaciente'];?></h5>
-                        <h6 class="card-title text-muted" id="nombrePsic"><?php echo $citas['nombrePsicologo'];?> <?php echo $citas['segundoNombrePsicologo'];?> <?php echo $citas['paternoPsicologo'];?> <?php echo $citas['maternoPsicologo'];?></h6>
+                        <h7 class="card-title text-muted" id="nombrePsic"><?php echo $citas['nombrePsicologo'];?> <?php echo $citas['segundoNombrePsicologo'];?> <?php echo $citas['paternoPsicologo'];?> <?php echo $citas['maternoPsicologo'];?></h7>
                         <p class="card-text mb-2 text-muted" id="datosSesion">
                           <?php
                           $fechaDiaVencimiento = $citas['dia'];

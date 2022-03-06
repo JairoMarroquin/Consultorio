@@ -6,7 +6,7 @@ class Conexion{
         $password=""; //12345JairoMarroquin
         $db="luz"; //yourjnls_luz
         $conexion =  mysqli_connect($servidor, $usuario, $password, $db);
-        //mysqli_query($conexion, "SET NAMES 'latin1'");
+        mysqli_query($conexion, "SET NAMES 'utf8'");
         return $conexion;
     } 
 }
